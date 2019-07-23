@@ -1,0 +1,71 @@
+select * from employees where employee_id in (select employee_id from employees where salary in(select max(salary) from employees where salary not in (select max(salary) from employees))); 
+select first_name,last_name,hire_date from employees where department_id =(select department_id from employees where first_name='Clara') and first_name<>'Clara';
+select employee_id,first_name,last_name,salary from employees where salary>(select avg(salary) from employees)and department_id in(select department_id from employees where first_name like '%J%');
+select employee_id,first_name,last_name,job_id from employees where department_id=(select department_id from departments  where location_id=(select location_id from locations where city='Toronto'));
+select employee_id,first_name,last_name,job_id from employees where salary>all (select salary from employees where job_id='PU_MAN')and job_id<>'PU_MAN';
+select employee_id,first_name,last_name,department_id from employees where exists (select * from employees where salary>700);
+select * from employees where manager_id in (select employee_id from employees where department_id in (select department_id from departments where location_id in  (select location_id from locations where country_id='US')));
+
+
+
+
+doubt
+select employee_id,first_name,last_name,job_id from employees where salary> (select avg(salary) from employees group by department_id);
+select ,employee_id,first_name,last_name 
+case when salary>=(select avg(salary) from employee )then 'high' 
+else'low' 
+end as salary_status 
+from employees;
+
+select employee_id,first_name,last_name 
+CASE job_id 
+WHEN 'ST_MAN' THEN 'SALESMAN' 
+WHEN 'IT_PROG' THEN 'DEVELOPER' 
+ELSE job_id 
+END as designation,salary
+from employees; 
+
+SELECT  employee_id,  first_name, last_name,  
+CASE job_id  
+WHEN 'ST_MAN' THEN 'SALESMAN'  
+WHEN 'IT_PROG' THEN 'DEVELOPER'  
+ELSE job_id  
+END AS designation,  salary 
+FROM employees;
+
+select department_id,sum(salary) from employees group by department_id;
+SELECT employee_id, first_name, last_name, job_id  
+FROM employees  
+WHERE salary > ALL  
+( SELECT AVG(salary)  
+FROM employees  
+GROUP BY department_id 
+);
+
+
+select * from employees where salary>=(select avg(salary) from employees where department_id 
+in(select department_id from departments where department_name like '%IT%'));
+SELECT last_name 
+FROM employees 
+WHERE department_id IN 
+(SELECT department_id 
+FROM departments 
+WHERE department_name LIKE 'IT%') 
+AND salary > 
+(SELECT avg(salary) 
+FROM employees);
+
+
+SELECT e1.first_name, e1.last_name 
+FROM employees e1 
+WHERE salary > 
+( SELECT (SUM(salary))*.5 
+FROM employees e2 
+WHERE e1.department_id=e2.department_id
+group by department_id);
+
+SELECT * 
+FROM employees 
+WHERE employee_id=ANY 
+( SELECT manager_id FROM departments );
+

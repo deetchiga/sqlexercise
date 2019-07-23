@@ -1,0 +1,162 @@
+1. Use a JOIN to display the first and last names, as well as the address, of each staff member. Use the tables staff and address:
+2. Use a JOIN to display the total amount rung up by each staff member in January of 2007. Use tables staff and payment.
+
+3. List each film and the number of actors who are listed for that film. Use tables film_actor and film. Use inner join.
+4. How many copies of the film Hunchback Impossible exist in the inventory system?
+5. Using the tables payment and customer and the JOIN command, list the total paid by each customer
+6. The music of Queen and Kris Kristofferson have seen an unlikely resurgence. As an unintended consequence, films starting with the letters K and Q have also soared in popularity. display the titles of movies starting with the letters K and Q whose language is English
+7. Use subqueries to display all actors who appear in the film Alone Trip
+
+1.select staff.first_name,staff.last_name,address.address from staff left join address on staff.address_id=address.address_id;
+ first_name | last_name |       address
+------------+-----------+----------------------
+ Mike       | Hillyer   | 23 Workhaven Lane
+ Jon        | Stephens  | 1411 Lillydale Drive
+(2 rows)
+
+2.dvdrental=# select payment.staff_id,sum(payment.amount) from payment left join staff on payment.staff_id=staff.staff_id group by payment.staff_id ;
+ staff_id |   sum
+----------+----------
+        1 | 30252.12
+        2 | 31059.92
+(2 rows)
+
+3.select film.title,count(film_actor.actor_id) as f from film  inner join film_actor on film.film_id=film_actor.film_id group by film.film_id;;
+            title            | f
+-----------------------------+----
+ Pajama Jawbreaker           |  5
+ Effect Gladiator            |  7
+ Balloon Homeward            |  6
+ Voyage Legally              |  5
+ Stallion Sundance           |  7
+ Bikini Borrowers            |  2
+ Garden Island               |  3
+ Saints Bride                | 10
+ Luck Opus                   |  6
+ Tadpole Park                |  8
+ Elf Murder                  |  5
+ Virtual Spoilers            |  3
+ Congeniality Quest          |  3
+ Mighty Luck                 |  8
+ Excitement Eve              |  8
+ Patient Sister              |  4
+ Usual Untouchables          |  5
+ Scissorhands Slums          |  5
+ Amistad Midsummer           |  4
+ Easy Gladiator              |  3
+ Hills Neighbors             |  6
+ Maltese Hope                |  1
+ Saturday Lambs              |  9
+ Lonely Elephant             | 12
+ Operation Operation         |  3
+ Show Lord                   |  2
+ Seattle Expecations         |  6
+ Victory Academy             |  5
+ Guys Falcon                 |  5
+ Confessions Maguire         |  4
+ Artist Coldblooded          |  7
+ Creatures Shakespeare       |  3
+ Clue Grail                  |  6
+ Tarzan Videotape            |  3
+ California Birds            |  2
+ Nuts Ties                   |  2
+ Paris Weekend               |  6
+ Caribbean Liberty           |  8
+ Million Ace                 |  5
+ Sky Miracle                 | 12
+ President Bang              |  5
+ Snatchers Montezuma         |  9
+ Hunger Roof                 |  1
+ Side Ark                    |  6
+ Basic Easy                  |  6
+
+4.select film.film_id,count(inventory.inventory_id) as f from film join inventory on film.film_id=inventory.film_id where film.title=' Hunchback Impossible' group by film.title;
+
+5.select sum(payment.amount),customer.first_name from payment join customer on payment.customer_id=customer.customer_id group by customer.first_name;
+  sum   | first_name
+--------+-------------
+  73.82 | Danny
+ 113.73 | Amber
+ 107.78 | Johnnie
+  96.76 | Edward
+ 111.73 | Cindy
+ 112.74 | Amy
+ 105.74 | Earl
+  94.76 | Geraldine
+ 111.71 | Carolyn
+  93.74 | Nancy
+ 101.76 | Rene
+  67.86 | Kenneth
+  68.82 | Adrian
+  71.80 | Ray
+  77.77 | Lydia
+  84.80 | Mathew
+ 118.73 | Jaime
+ 106.74 | Victoria
+ 126.70 | Grace
+  96.79 | Carlos
+ 149.61 | Tammy
+ 152.68 | Steve
+  81.83 | Vernon
+ 125.67 | Justin
+  85.77 | Susan
+  62.81 | Tony
+  70.81 | Wayne
+  70.82 | Irma
+  99.74 | Sherri
+  77.78 | Rita
+  79.80 | Jenny
+  92.76 | Renee
+  86.73 | Wendy
+  99.68 | Bobby
+  64.84 | Henry
+ 109.71 | Kyle
+ 106.79 | Dan
+  73.81 | Herbert
+  89.77 | Lillie
+ 207.52 | Leslie
+  32.90 | Leona
+  87.79 | Loretta
+ 132.72 | Jennie
+
+6.
+dvdrental=# SELECT title
+dvdrental-# FROM film
+dvdrental-# where title LIKE 'K%' or title like '%q';
+      title
+------------------
+ Kane Exorcist
+ Karate Moon
+ Kentuckian Giant
+ Kick Savannah
+ Kill Brotherhood
+ Killer Innocent
+ King Evolution
+ Kiss Glory
+ Kissing Dolls
+ Knock Warlock
+ Kramer Chocolate
+ Kwai Homeward
+(12 rows)
+
+7.dvdrental=# select film_actor.actor_id,film.film_id,film.title from film join film_actor on film_actor.film_id=film.film_id where film.title='Alone Trip';
+ actor_id | film_id |   title
+----------+---------+------------
+        3 |      17 | Alone Trip
+       12 |      17 | Alone Trip
+       13 |      17 | Alone Trip
+       82 |      17 | Alone Trip
+      100 |      17 | Alone Trip
+      160 |      17 | Alone Trip
+      167 |      17 | Alone Trip
+      187 |      17 | Alone Trip
+(8 rows) 
+
+select a.actor_id 
+from film_actor a join actor on a.actor_id=actor.actor_id where a.title='Alone Trip';
+
+select film_actor.actor_id 
+from (select film.film_id from film where film_actor.film_id=film.film_id) from film) a join actor on a.actor_id=actor.actor_id where a.title='Alone Trip';
+
+
+(select film.film_id,actor.film_id where film_actor.film_id=film.film_id from actor_film) from film

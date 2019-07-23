@@ -1,0 +1,1042 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+psql (11.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# create database dvdrental
+postgres-# create database dvdrental;
+ERROR:  syntax error at or near "create"
+LINE 2: create database dvdrental;
+        ^
+postgres=# CREATE DATABASE dvdrental;
+CREATE DATABASE
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=# CREATE DATABASE dvdrental;
+ERROR:  database "dvdrental" already exists
+postgres=# /l
+postgres-# /?
+postgres-# \?
+General
+  \copyright             show PostgreSQL usage and distribution terms
+  \crosstabview [COLUMNS] execute query and display results in crosstab
+  \errverbose            show most recent error message at maximum verbosity
+  \g [FILE] or ;         execute query (and send results to file or |pipe)
+  \gdesc                 describe result of query, without executing it
+  \gexec                 execute query, then execute each value in its result
+  \gset [PREFIX]         execute query and store results in psql variables
+  \gx [FILE]             as \g, but forces expanded output mode
+  \q                     quit psql
+  \watch [SEC]           execute query every SEC seconds
+
+Help
+  \? [commands]          show help on backslash commands
+  \? options             show help on psql command-line options
+  \? variables           show help on special variables
+  \h [NAME]              help on syntax of SQL commands, * for all commands
+
+Query Buffer
+  \e [FILE] [LINE]       edit the query buffer (or file) with external editor
+  \ef [FUNCNAME [LINE]]  edit function definition with external editor
+  \ev [VIEWNAME [LINE]]  edit view definition with external editor
+  \p                     show the contents of the query buffer
+  \r                     reset (clear) the query buffer
+  \w FILE                write query buffer to file
+
+Input/Output
+  \copy ...              perform SQL COPY with data stream to the client host
+  \echo [STRING]         write string to standard output
+  \i FILE                execute commands from file
+  \ir FILE               as \i, but relative to location of current script
+  \o [FILE]              send all query results to file or |pipe
+  \qecho [STRING]        write string to query output stream (see \o)
+
+Conditional
+  \if EXPR               begin conditional block
+  \elif EXPR             alternative within current conditional block
+  \else                  final alternative within current conditional block
+  \endif                 end conditional block
+
+Informational
+  (options: S = show system objects, + = additional detail)
+  \d[S+]                 list tables, views, and sequences
+  \d[S+]  NAME           describe table, view, sequence, or index
+  \da[S]  [PATTERN]      list aggregates
+  \dA[+]  [PATTERN]      list access methods
+  \db[+]  [PATTERN]      list tablespaces
+  \dc[S+] [PATTERN]      list conversions
+  \dC[+]  [PATTERN]      list casts
+  \dd[S]  [PATTERN]      show object descriptions not displayed elsewhere
+  \dD[S+] [PATTERN]      list domains
+  \ddp    [PATTERN]      list default privileges
+  \dE[S+] [PATTERN]      list foreign tables
+  \det[+] [PATTERN]      list foreign tables
+  \des[+] [PATTERN]      list foreign servers
+  \deu[+] [PATTERN]      list user mappings
+  \dew[+] [PATTERN]      list foreign-data wrappers
+  \df[anptw][S+] [PATRN] list [only agg/normal/procedures/trigger/window] functions
+  \dF[+]  [PATTERN]      list text search configurations
+  \dFd[+] [PATTERN]      list text search dictionaries
+  \dFp[+] [PATTERN]      list text search parsers
+  \dFt[+] [PATTERN]      list text search templates
+  \dg[S+] [PATTERN]      list roles
+  \di[S+] [PATTERN]      list indexes
+  \dl                    list large objects, same as \lo_list
+  \dL[S+] [PATTERN]      list procedural languages
+  \dm[S+] [PATTERN]      list materialized views
+  \dn[S+] [PATTERN]      list schemas
+  \do[S]  [PATTERN]      list operators
+  \dO[S+] [PATTERN]      list collations
+  \dp     [PATTERN]      list table, view, and sequence access privileges
+  \drds [PATRN1 [PATRN2]] list per-database role settings
+  \dRp[+] [PATTERN]      list replication publications
+  \dRs[+] [PATTERN]      list replication subscriptions
+  \ds[S+] [PATTERN]      list sequences
+  \dt[S+] [PATTERN]      list tables
+  \dT[S+] [PATTERN]      list data types
+  \du[S+] [PATTERN]      list roles
+  \dv[S+] [PATTERN]      list views
+  \dx[+]  [PATTERN]      list extensions
+  \dy     [PATTERN]      list event triggers
+  \l[+]   [PATTERN]      list databases
+  \sf[+]  FUNCNAME       show a function's definition
+  \sv[+]  VIEWNAME       show a view's definition
+  \z      [PATTERN]      same as \dp
+
+Formatting
+  \a                     toggle between unaligned and aligned output mode
+  \C [STRING]            set table title, or unset if none
+  \f [STRING]            show or set field separator for unaligned query output
+  \H                     toggle HTML output mode (currently off)
+  \pset [NAME [VALUE]]   set table output option
+                         (NAME := {border|columns|expanded|fieldsep|fieldsep_zero|
+                         footer|format|linestyle|null|numericlocale|pager|
+                         pager_min_lines|recordsep|recordsep_zero|tableattr|title|
+                         tuples_only|unicode_border_linestyle|
+                         unicode_column_linestyle|unicode_header_linestyle})
+  \t [on|off]            show only rows (currently off)
+  \T [STRING]            set HTML <table> tag attributes, or unset if none
+  \x [on|off|auto]       toggle expanded output (currently off)
+
+Connection
+  \c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo}
+                         connect to new database (currently "postgres")
+  \conninfo              display information about current connection
+  \encoding [ENCODING]   show or set client encoding
+  \password [USERNAME]   securely change the password for a user
+
+Operating System
+  \cd [DIR]              change the current working directory
+  \setenv NAME [VALUE]   set or unset environment variable
+  \timing [on|off]       toggle timing of commands (currently off)
+  \! [COMMAND]           execute command in shell or start interactive shell
+
+Variables
+  \prompt [TEXT] NAME    prompt user to set internal variable
+  \set [NAME [VALUE]]    set internal variable, or list all if no parameters
+  \unset NAME            unset (delete) internal variable
+
+Large Objects
+  \lo_export LOBOID FILE
+  \lo_import FILE [COMMENT]
+  \lo_list
+  \lo_unlink LOBOID      large object operations
+
+postgres-#
+postgres-#
+postgres-#
+postgres-#
+postgres-# \l
+                                         List of databases
+   Name    |  Owner   | Encoding |      Collate       |       Ctype        |   Access privileges
+-----------+----------+----------+--------------------+--------------------+-----------------------
+ dvdrental | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ postgres  | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ template0 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+ template1 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+(4 rows)
+
+
+postgres-# \b
+Invalid command \b. Try \? for help.
+postgres-# \d
+Did not find any relations.
+postgres-# select *from dvdrental;
+ERROR:  syntax error at or near "/"
+LINE 1: /l
+        ^
+postgres=# select *from dvdrental;
+ERROR:  relation "dvdrental" does not exist
+LINE 1: select *from dvdrental;
+                     ^
+postgres=# select * from dvdrental;
+ERROR:  relation "dvdrental" does not exist
+LINE 1: select * from dvdrental;
+                      ^
+postgres=# /l
+postgres-# select * from dvdrental;
+ERROR:  syntax error at or near "/"
+LINE 1: /l
+        ^
+postgres=#
+postgres=#
+postgres=# select * from dvdrental;
+ERROR:  relation "dvdrental" does not exist
+LINE 1: select * from dvdrental;
+                      ^
+postgres=# create database d;
+CREATE DATABASE
+postgres=# insert into d(sno,name,age,place)
+postgres-# insert into d(number sno,char name,number age,char place)
+postgres-# select *from d
+postgres-#
+postgres-#
+postgres-#
+postgres-# create database dat;
+ERROR:  syntax error at or near "insert"
+LINE 2: insert into d(number sno,char name,number age,char place)
+        ^
+postgres=#
+postgres=# create database dat;
+CREATE DATABASE
+postgres=# create table d(number sno[20],varchar name[50],number age[50],number m1[10],number m2[10],number m3[10]);
+ERROR:  type "sno[]" does not exist
+LINE 1: create table d(number sno[20],varchar name[50],number age[50...
+                              ^
+postgres=# create table d(number snumber[5],varchar name[50],number age[50],number m1[10],number m2[10],number m3[10]);
+ERROR:  type "snumber[]" does not exist
+LINE 1: create table d(number snumber[5],varchar name[50],number age...
+                              ^
+postgres=# create table d(int snumber[5],varchar name[50],int age[50],int m1[10],int m2[10],int m3[10]);
+ERROR:  type "snumber[]" does not exist
+LINE 1: create table d(int snumber[5],varchar name[50],int age[50],i...
+                           ^
+postgres=# create table d(sno int[5],name varchar[50],age int[50],m1 int[10],m2 int[10],m3 int[10]);
+CREATE TABLE
+postgres=# /l
+postgres-# \l
+                                         List of databases
+   Name    |  Owner   | Encoding |      Collate       |       Ctype        |   Access privileges
+-----------+----------+----------+--------------------+--------------------+-----------------------
+ d         | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ dat       | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ dvdrental | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ postgres  | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ template0 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+ template1 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+(6 rows)
+
+
+postgres-# \c dvdrental
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+You are now connected to database "dvdrental" as user "postgres".
+dvdrental-# \d
+                     List of relations
+ Schema |            Name            |   Type   |  Owner
+--------+----------------------------+----------+----------
+ public | actor                      | table    | postgres
+ public | actor_actor_id_seq         | sequence | postgres
+ public | actor_info                 | view     | postgres
+ public | address                    | table    | postgres
+ public | address_address_id_seq     | sequence | postgres
+ public | category                   | table    | postgres
+ public | category_category_id_seq   | sequence | postgres
+ public | city                       | table    | postgres
+ public | city_city_id_seq           | sequence | postgres
+ public | country                    | table    | postgres
+ public | country_country_id_seq     | sequence | postgres
+ public | customer                   | table    | postgres
+ public | customer_customer_id_seq   | sequence | postgres
+ public | customer_list              | view     | postgres
+ public | film                       | table    | postgres
+ public | film_actor                 | table    | postgres
+ public | film_category              | table    | postgres
+ public | film_film_id_seq           | sequence | postgres
+ public | film_list                  | view     | postgres
+ public | inventory                  | table    | postgres
+ public | inventory_inventory_id_seq | sequence | postgres
+ public | language                   | table    | postgres
+ public | language_language_id_seq   | sequence | postgres
+ public | nicer_but_slower_film_list | view     | postgres
+ public | payment                    | table    | postgres
+ public | payment_payment_id_seq     | sequence | postgres
+ public | rental                     | table    | postgres
+ public | rental_rental_id_seq       | sequence | postgres
+ public | sales_by_film_category     | view     | postgres
+ public | sales_by_store             | view     | postgres
+ public | staff                      | table    | postgres
+ public | staff_list                 | view     | postgres
+ public | staff_staff_id_seq         | sequence | postgres
+ public | store                      | table    | postgres
+ public | store_store_id_seq         | sequence | postgres
+(35 rows)
+
+
+dvdrental-# select *from actor;
+ERROR:  syntax error at or near "/"
+LINE 1: /l
+        ^
+dvdrental=# select *from actor;
+ actor_id | first_name  |  last_name   |      last_update
+----------+-------------+--------------+------------------------
+        1 | Penelope    | Guiness      | 2013-05-26 14:47:57.62
+        2 | Nick        | Wahlberg     | 2013-05-26 14:47:57.62
+        3 | Ed          | Chase        | 2013-05-26 14:47:57.62
+        4 | Jennifer    | Davis        | 2013-05-26 14:47:57.62
+        5 | Johnny      | Lollobrigida | 2013-05-26 14:47:57.62
+        6 | Bette       | Nicholson    | 2013-05-26 14:47:57.62
+        7 | Grace       | Mostel       | 2013-05-26 14:47:57.62
+        8 | Matthew     | Johansson    | 2013-05-26 14:47:57.62
+        9 | Joe         | Swank        | 2013-05-26 14:47:57.62
+       10 | Christian   | Gable        | 2013-05-26 14:47:57.62
+       11 | Zero        | Cage         | 2013-05-26 14:47:57.62
+       12 | Karl        | Berry        | 2013-05-26 14:47:57.62
+       13 | Uma         | Wood         | 2013-05-26 14:47:57.62
+       14 | Vivien      | Bergen       | 2013-05-26 14:47:57.62
+       15 | Cuba        | Olivier      | 2013-05-26 14:47:57.62
+       16 | Fred        | Costner      | 2013-05-26 14:47:57.62
+       17 | Helen       | Voight       | 2013-05-26 14:47:57.62
+       18 | Dan         | Torn         | 2013-05-26 14:47:57.62
+       19 | Bob         | Fawcett      | 2013-05-26 14:47:57.62
+       20 | Lucille     | Tracy        | 2013-05-26 14:47:57.62
+       21 | Kirsten     | Paltrow      | 2013-05-26 14:47:57.62
+       22 | Elvis       | Marx         | 2013-05-26 14:47:57.62
+       23 | Sandra      | Kilmer       | 2013-05-26 14:47:57.62
+       24 | Cameron     | Streep       | 2013-05-26 14:47:57.62
+       25 | Kevin       | Bloom        | 2013-05-26 14:47:57.62
+       26 | Rip         | Crawford     | 2013-05-26 14:47:57.62
+       27 | Julia       | Mcqueen      | 2013-05-26 14:47:57.62
+       28 | Woody       | Hoffman      | 2013-05-26 14:47:57.62
+       29 | Alec        | Wayne        | 2013-05-26 14:47:57.62
+       30 | Sandra      | Peck         | 2013-05-26 14:47:57.62
+       31 | Sissy       | Sobieski     | 2013-05-26 14:47:57.62
+       32 | Tim         | Hackman      | 2013-05-26 14:47:57.62
+       33 | Milla       | Peck         | 2013-05-26 14:47:57.62
+       34 | Audrey      | Olivier      | 2013-05-26 14:47:57.62
+       35 | Judy        | Dean         | 2013-05-26 14:47:57.62
+       36 | Burt        | Dukakis      | 2013-05-26 14:47:57.62
+       37 | Val         | Bolger       | 2013-05-26 14:47:57.62
+       38 | Tom         | Mckellen     | 2013-05-26 14:47:57.62
+       39 | Goldie      | Brody        | 2013-05-26 14:47:57.62
+       40 | Johnny      | Cage         | 2013-05-26 14:47:57.62
+       41 | Jodie       | Degeneres    | 2013-05-26 14:47:57.62
+       42 | Tom         | Miranda      | 2013-05-26 14:47:57.62
+       43 | Kirk        | Jovovich     | 2013-05-26 14:47:57.62
+       44 | Nick        | Stallone     | 2013-05-26 14:47:57.62
+       45 | Reese       | Kilmer       | 2013-05-26 14:47:57.62
+       46 | Parker      | Goldberg     | 2013-05-26 14:47:57.62
+       47 | Julia       | Barrymore    | 2013-05-26 14:47:57.62
+       48 | Frances     | Day-Lewis    | 2013-05-26 14:47:57.62
+       49 | Anne        | Cronyn       | 2013-05-26 14:47:57.62
+       50 | Natalie     | Hopkins      | 2013-05-26 14:47:57.62
+       51 | Gary        | Phoenix      | 2013-05-26 14:47:57.62
+       52 | Carmen      | Hunt         | 2013-05-26 14:47:57.62
+       53 | Mena        | Temple       | 2013-05-26 14:47:57.62
+       54 | Penelope    | Pinkett      | 2013-05-26 14:47:57.62
+       55 | Fay         | Kilmer       | 2013-05-26 14:47:57.62
+       56 | Dan         | Harris       | 2013-05-26 14:47:57.62
+       57 | Jude        | Cruise       | 2013-05-26 14:47:57.62
+       58 | Christian   | Akroyd       | 2013-05-26 14:47:57.62
+       59 | Dustin      | Tautou       | 2013-05-26 14:47:57.62
+       60 | Henry       | Berry        | 2013-05-26 14:47:57.62
+       61 | Christian   | Neeson       | 2013-05-26 14:47:57.62
+       62 | Jayne       | Neeson       | 2013-05-26 14:47:57.62
+       63 | Cameron     | Wray         | 2013-05-26 14:47:57.62
+       64 | Ray         | Johansson    | 2013-05-26 14:47:57.62
+       65 | Angela      | Hudson       | 2013-05-26 14:47:57.62
+       66 | Mary        | Tandy        | 2013-05-26 14:47:57.62
+       67 | Jessica     | Bailey       | 2013-05-26 14:47:57.62
+       68 | Rip         | Winslet      | 2013-05-26 14:47:57.62
+       69 | Kenneth     | Paltrow      | 2013-05-26 14:47:57.62
+       70 | Michelle    | Mcconaughey  | 2013-05-26 14:47:57.62
+       71 | Adam        | Grant        | 2013-05-26 14:47:57.62
+       72 | Sean        | Williams     | 2013-05-26 14:47:57.62
+       73 | Gary        | Penn         | 2013-05-26 14:47:57.62
+       74 | Milla       | Keitel       | 2013-05-26 14:47:57.62
+       75 | Burt        | Posey        | 2013-05-26 14:47:57.62
+       76 | Angelina    | Astaire      | 2013-05-26 14:47:57.62
+       77 | Cary        | Mcconaughey  | 2013-05-26 14:47:57.62
+       78 | Groucho     | Sinatra      | 2013-05-26 14:47:57.62
+       79 | Mae         | Hoffman      | 2013-05-26 14:47:57.62
+       80 | Ralph       | Cruz         | 2013-05-26 14:47:57.62
+       81 | Scarlett    | Damon        | 2013-05-26 14:47:57.62
+       82 | Woody       | Jolie        | 2013-05-26 14:47:57.62
+       83 | Ben         | Willis       | 2013-05-26 14:47:57.62
+       84 | James       | Pitt         | 2013-05-26 14:47:57.62
+       85 | Minnie      | Zellweger    | 2013-05-26 14:47:57.62
+      143 | River       | Dean         | 2013-05-26 14:47:57.62
+       86 | Greg        | Chaplin      | 2013-05-26 14:47:57.62
+       87 | Spencer     | Peck         | 2013-05-26 14:47:57.62
+       88 | Kenneth     | Pesci        | 2013-05-26 14:47:57.62
+       89 | Charlize    | Dench        | 2013-05-26 14:47:57.62
+       90 | Sean        | Guiness      | 2013-05-26 14:47:57.62
+       91 | Christopher | Berry        | 2013-05-26 14:47:57.62
+       92 | Kirsten     | Akroyd       | 2013-05-26 14:47:57.62
+       93 | Ellen       | Presley      | 2013-05-26 14:47:57.62
+       94 | Kenneth     | Torn         | 2013-05-26 14:47:57.62
+       95 | Daryl       | Wahlberg     | 2013-05-26 14:47:57.62
+       96 | Gene        | Willis       | 2013-05-26 14:47:57.62
+       97 | Meg         | Hawke        | 2013-05-26 14:47:57.62
+       98 | Chris       | Bridges      | 2013-05-26 14:47:57.62
+       99 | Jim         | Mostel       | 2013-05-26 14:47:57.62
+      100 | Spencer     | Depp         | 2013-05-26 14:47:57.62
+      101 | Susan       | Davis        | 2013-05-26 14:47:57.62
+      102 | Walter      | Torn         | 2013-05-26 14:47:57.62
+      103 | Matthew     | Leigh        | 2013-05-26 14:47:57.62
+      104 | Penelope    | Cronyn       | 2013-05-26 14:47:57.62
+      105 | Sidney      | Crowe        | 2013-05-26 14:47:57.62
+      106 | Groucho     | Dunst        | 2013-05-26 14:47:57.62
+      107 | Gina        | Degeneres    | 2013-05-26 14:47:57.62
+      108 | Warren      | Nolte        | 2013-05-26 14:47:57.62
+      109 | Sylvester   | Dern         | 2013-05-26 14:47:57.62
+      110 | Susan       | Davis        | 2013-05-26 14:47:57.62
+      111 | Cameron     | Zellweger    | 2013-05-26 14:47:57.62
+      112 | Russell     | Bacall       | 2013-05-26 14:47:57.62
+      113 | Morgan      | Hopkins      | 2013-05-26 14:47:57.62
+      114 | Morgan      | Mcdormand    | 2013-05-26 14:47:57.62
+      115 | Harrison    | Bale         | 2013-05-26 14:47:57.62
+      116 | Dan         | Streep       | 2013-05-26 14:47:57.62
+      117 | Renee       | Tracy        | 2013-05-26 14:47:57.62
+      118 | Cuba        | Allen        | 2013-05-26 14:47:57.62
+      119 | Warren      | Jackman      | 2013-05-26 14:47:57.62
+      120 | Penelope    | Monroe       | 2013-05-26 14:47:57.62
+      121 | Liza        | Bergman      | 2013-05-26 14:47:57.62
+      122 | Salma       | Nolte        | 2013-05-26 14:47:57.62
+      123 | Julianne    | Dench        | 2013-05-26 14:47:57.62
+      124 | Scarlett    | Bening       | 2013-05-26 14:47:57.62
+      125 | Albert      | Nolte        | 2013-05-26 14:47:57.62
+      126 | Frances     | Tomei        | 2013-05-26 14:47:57.62
+      127 | Kevin       | Garland      | 2013-05-26 14:47:57.62
+      128 | Cate        | Mcqueen      | 2013-05-26 14:47:57.62
+      129 | Daryl       | Crawford     | 2013-05-26 14:47:57.62
+      130 | Greta       | Keitel       | 2013-05-26 14:47:57.62
+      131 | Jane        | Jackman      | 2013-05-26 14:47:57.62
+      132 | Adam        | Hopper       | 2013-05-26 14:47:57.62
+      133 | Richard     | Penn         | 2013-05-26 14:47:57.62
+      134 | Gene        | Hopkins      | 2013-05-26 14:47:57.62
+      135 | Rita        | Reynolds     | 2013-05-26 14:47:57.62
+      136 | Ed          | Mansfield    | 2013-05-26 14:47:57.62
+      137 | Morgan      | Williams     | 2013-05-26 14:47:57.62
+      138 | Lucille     | Dee          | 2013-05-26 14:47:57.62
+      139 | Ewan        | Gooding      | 2013-05-26 14:47:57.62
+      140 | Whoopi      | Hurt         | 2013-05-26 14:47:57.62
+      141 | Cate        | Harris       | 2013-05-26 14:47:57.62
+      142 | Jada        | Ryder        | 2013-05-26 14:47:57.62
+      144 | Angela      | Witherspoon  | 2013-05-26 14:47:57.62
+      145 | Kim         | Allen        | 2013-05-26 14:47:57.62
+      146 | Albert      | Johansson    | 2013-05-26 14:47:57.62
+      147 | Fay         | Winslet      | 2013-05-26 14:47:57.62
+      148 | Emily       | Dee          | 2013-05-26 14:47:57.62
+      149 | Russell     | Temple       | 2013-05-26 14:47:57.62
+      150 | Jayne       | Nolte        | 2013-05-26 14:47:57.62
+      151 | Geoffrey    | Heston       | 2013-05-26 14:47:57.62
+      152 | Ben         | Harris       | 2013-05-26 14:47:57.62
+      153 | Minnie      | Kilmer       | 2013-05-26 14:47:57.62
+      154 | Meryl       | Gibson       | 2013-05-26 14:47:57.62
+      155 | Ian         | Tandy        | 2013-05-26 14:47:57.62
+      156 | Fay         | Wood         | 2013-05-26 14:47:57.62
+      157 | Greta       | Malden       | 2013-05-26 14:47:57.62
+      158 | Vivien      | Basinger     | 2013-05-26 14:47:57.62
+      159 | Laura       | Brody        | 2013-05-26 14:47:57.62
+      160 | Chris       | Depp         | 2013-05-26 14:47:57.62
+      161 | Harvey      | Hope         | 2013-05-26 14:47:57.62
+      162 | Oprah       | Kilmer       | 2013-05-26 14:47:57.62
+      163 | Christopher | West         | 2013-05-26 14:47:57.62
+      164 | Humphrey    | Willis       | 2013-05-26 14:47:57.62
+      165 | Al          | Garland      | 2013-05-26 14:47:57.62
+      166 | Nick        | Degeneres    | 2013-05-26 14:47:57.62
+      167 | Laurence    | Bullock      | 2013-05-26 14:47:57.62
+      168 | Will        | Wilson       | 2013-05-26 14:47:57.62
+      169 | Kenneth     | Hoffman      | 2013-05-26 14:47:57.62
+      170 | Mena        | Hopper       | 2013-05-26 14:47:57.62
+      171 | Olympia     | Pfeiffer     | 2013-05-26 14:47:57.62
+      172 | Groucho     | Williams     | 2013-05-26 14:47:57.62
+      173 | Alan        | Dreyfuss     | 2013-05-26 14:47:57.62
+      174 | Michael     | Bening       | 2013-05-26 14:47:57.62
+      175 | William     | Hackman      | 2013-05-26 14:47:57.62
+      176 | Jon         | Chase        | 2013-05-26 14:47:57.62
+      177 | Gene        | Mckellen     | 2013-05-26 14:47:57.62
+      178 | Lisa        | Monroe       | 2013-05-26 14:47:57.62
+      179 | Ed          | Guiness      | 2013-05-26 14:47:57.62
+      180 | Jeff        | Silverstone  | 2013-05-26 14:47:57.62
+      181 | Matthew     | Carrey       | 2013-05-26 14:47:57.62
+      182 | Debbie      | Akroyd       | 2013-05-26 14:47:57.62
+      183 | Russell     | Close        | 2013-05-26 14:47:57.62
+      184 | Humphrey    | Garland      | 2013-05-26 14:47:57.62
+      185 | Michael     | Bolger       | 2013-05-26 14:47:57.62
+      186 | Julia       | Zellweger    | 2013-05-26 14:47:57.62
+      187 | Renee       | Ball         | 2013-05-26 14:47:57.62
+      188 | Rock        | Dukakis      | 2013-05-26 14:47:57.62
+      189 | Cuba        | Birch        | 2013-05-26 14:47:57.62
+      190 | Audrey      | Bailey       | 2013-05-26 14:47:57.62
+      191 | Gregory     | Gooding      | 2013-05-26 14:47:57.62
+      192 | John        | Suvari       | 2013-05-26 14:47:57.62
+      193 | Burt        | Temple       | 2013-05-26 14:47:57.62
+      194 | Meryl       | Allen        | 2013-05-26 14:47:57.62
+      195 | Jayne       | Silverstone  | 2013-05-26 14:47:57.62
+      196 | Bela        | Walken       | 2013-05-26 14:47:57.62
+      197 | Reese       | West         | 2013-05-26 14:47:57.62
+      198 | Mary        | Keitel       | 2013-05-26 14:47:57.62
+      199 | Julia       | Fawcett      | 2013-05-26 14:47:57.62
+      200 | Thora       | Temple       | 2013-05-26 14:47:57.62
+(200 rows)
+
+
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=#
+dvdrental=# \d
+                     List of relations
+ Schema |            Name            |   Type   |  Owner
+--------+----------------------------+----------+----------
+ public | actor                      | table    | postgres
+ public | actor_actor_id_seq         | sequence | postgres
+ public | actor_info                 | view     | postgres
+ public | address                    | table    | postgres
+ public | address_address_id_seq     | sequence | postgres
+ public | category                   | table    | postgres
+ public | category_category_id_seq   | sequence | postgres
+ public | city                       | table    | postgres
+ public | city_city_id_seq           | sequence | postgres
+ public | country                    | table    | postgres
+ public | country_country_id_seq     | sequence | postgres
+ public | customer                   | table    | postgres
+ public | customer_customer_id_seq   | sequence | postgres
+ public | customer_list              | view     | postgres
+ public | film                       | table    | postgres
+ public | film_actor                 | table    | postgres
+ public | film_category              | table    | postgres
+ public | film_film_id_seq           | sequence | postgres
+ public | film_list                  | view     | postgres
+ public | inventory                  | table    | postgres
+ public | inventory_inventory_id_seq | sequence | postgres
+ public | language                   | table    | postgres
+ public | language_language_id_seq   | sequence | postgres
+ public | nicer_but_slower_film_list | view     | postgres
+ public | payment                    | table    | postgres
+ public | payment_payment_id_seq     | sequence | postgres
+ public | rental                     | table    | postgres
+ public | rental_rental_id_seq       | sequence | postgres
+ public | sales_by_film_category     | view     | postgres
+ public | sales_by_store             | view     | postgres
+ public | staff                      | table    | postgres
+ public | staff_list                 | view     | postgres
+ public | staff_staff_id_seq         | sequence | postgres
+ public | store                      | table    | postgres
+ public | store_store_id_seq         | sequence | postgres
+(35 rows)
+
+
+dvdrental=# \d actor
+                                            Table "public.actor"
+   Column    |            Type             | Collation | Nullable |                 Default
+-------------+-----------------------------+-----------+----------+-----------------------------------------
+ actor_id    | integer                     |           | not null | nextval('actor_actor_id_seq'::regclass)
+ first_name  | character varying(45)       |           | not null |
+ last_name   | character varying(45)       |           | not null |
+ last_update | timestamp without time zone |           | not null | now()
+Indexes:
+    "actor_pkey" PRIMARY KEY, btree (actor_id)
+    "idx_actor_last_name" btree (last_name)
+Referenced by:
+    TABLE "film_actor" CONSTRAINT "film_actor_actor_id_fkey" FOREIGN KEY (actor_id) REFERENCES actor(actor_id) ON UPDATE CASCADE ON DELETE RESTRICT
+Triggers:
+    last_updated BEFORE UPDATE ON actor FOR EACH ROW EXECUTE PROCEDURE last_updated()
+
+
+dvdrental=# create table d(sno int[5],name varchar[50],age int[50],m1 int[10],m2 int[10],m3 int[10]);
+CREATE TABLE
+dvdrental=# insert into table d values(1,aravind,20,90,98,88);
+ERROR:  syntax error at or near "table"
+LINE 1: insert into table d values(1,aravind,20,90,98,88);
+                    ^
+dvdrental=# insert into d values(1,aravind,20,90,98,88);
+ERROR:  column "aravind" does not exist
+LINE 1: insert into d values(1,aravind,20,90,98,88);
+                               ^
+dvdrental=# insert into d values(1,"aravind",20,90,98,88);
+ERROR:  column "aravind" does not exist
+LINE 1: insert into d values(1,"aravind",20,90,98,88);
+                               ^
+dvdrental=# INSERT INTO table_name (column1, column2, column3,..) VALUES ( value1, value2, value3,..);
+ERROR:  syntax error at or near ".."
+LINE 1: INSERT INTO table_name (column1, column2, column3,..) VALUES...
+                                                          ^
+dvdrental=# INSERT INTO d(sno,name,age,m1,m2,m3) VALUES (' 1','aravind','20','77','98','90');
+ERROR:  malformed array literal: " 1"
+LINE 1: INSERT INTO d(sno,name,age,m1,m2,m3) VALUES (' 1','aravind',...
+                                                     ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# INSERT INTO d(sno,name,age,m1,m2,m3) VALUES ('1','aravind','20','77','98','90');
+ERROR:  malformed array literal: "1"
+LINE 1: INSERT INTO d(sno,name,age,m1,m2,m3) VALUES ('1','aravind','...
+                                                     ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# insert into d values('1','aravind','20','90','98','88');
+ERROR:  malformed array literal: "1"
+LINE 1: insert into d values('1','aravind','20','90','98','88');
+                             ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# select * from d;
+ sno | name | age | m1 | m2 | m3
+-----+------+-----+----+----+----
+(0 rows)
+
+
+dvdrental=# \d d
+                       Table "public.d"
+ Column |        Type         | Collation | Nullable | Default
+--------+---------------------+-----------+----------+---------
+ sno    | integer[]           |           |          |
+ name   | character varying[] |           |          |
+ age    | integer[]           |           |          |
+ m1     | integer[]           |           |          |
+ m2     | integer[]           |           |          |
+ m3     | integer[]           |           |          |
+
+
+dvdrental=# insert into d values(1,'aravind',20,90,98,88);
+ERROR:  column "sno" is of type integer[] but expression is of type integer
+LINE 1: insert into d values(1,'aravind',20,90,98,88);
+                             ^
+HINT:  You will need to rewrite or cast the expression.
+dvdrental=# insert into(sno, name, age, m1, m2, m3) d values(1,'aravind',20,90,98,88);
+ERROR:  syntax error at or near "("
+LINE 1: insert into(sno, name, age, m1, m2, m3) d values(1,'aravind'...
+                   ^
+dvdrental=# insert into d(sno, name, age, m1, m2, m3) values(1,'aravind',20,90,98,88);
+ERROR:  column "sno" is of type integer[] but expression is of type integer
+LINE 1: insert into d(sno, name, age, m1, m2, m3) values(1,'aravind'...
+                                                         ^
+HINT:  You will need to rewrite or cast the expression.
+dvdrental=# create table dat(sno int(5),name varchar(50),age int(10),m1 int(10),m2 int(10),m3 int(10));
+ERROR:  syntax error at or near "("
+LINE 1: create table dat(sno int(5),name varchar(50),age int(10),m1 ...
+                                ^
+dvdrental=# create table dat(sno integer(5),name varchar(50),age int(10),m1 int(10),m2 int(10),m3 int(10));
+ERROR:  syntax error at or near "("
+LINE 1: create table dat(sno integer(5),name varchar(50),age int(10)...
+                                    ^
+dvdrental=# create table dat(sno int,name varchar(50),age int,m1 int,m2 int,m3 numeric(10));
+CREATE TABLE
+dvdrental=# insert into d(sno, name, age, m1, m2, m3) values(1,'aravind',20,90,98,88);
+ERROR:  column "sno" is of type integer[] but expression is of type integer
+LINE 1: insert into d(sno, name, age, m1, m2, m3) values(1,'aravind'...
+                                                         ^
+HINT:  You will need to rewrite or cast the expression.
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(1,'aravind',20,90,98,88);
+INSERT 0 1
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(2,'abddevillears',18,20,20,10);
+INSERT 0 1
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(3,'jadega,78,60,60,30);
+dvdrental'# insert into dat(sno, name, age, m1, m2, m3) values(3,'jadega',78,60,60,30);
+dvdrental'# insert into dat(sno, name, age, m1, m2, m3) values(3,'jadega',10,60,60,30);
+dvdrental'# select * from dat;
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'#
+dvdrental'# '
+dvdrental(# )
+dvdrental-# ;
+ERROR:  syntax error at or near "jadega"
+LINE 2: ...rt into dat(sno, name, age, m1, m2, m3) values(3,'jadega',78...
+                                                             ^
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(3,'jadega',10,60,60,30);
+INSERT 0 1
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(3,'aloo',18,60,90,90);
+INSERT 0 1
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(3,'aloo',20,90,98,98);
+INSERT 0 1
+dvdrental=# select * from dat;
+ sno |     name      | age | m1 | m2 | m3
+-----+---------------+-----+----+----+----
+   1 | aravind       |  20 | 90 | 98 | 88
+   2 | abddevillears |  18 | 20 | 20 | 10
+   3 | jadega        |  10 | 60 | 60 | 30
+   3 | aloo          |  18 | 60 | 90 | 90
+   3 | aloo          |  20 | 90 | 98 | 98
+(5 rows)
+
+
+dvdrental=# update d set sno=4 where name='aloo';
+ERROR:  malformed array literal: "aloo"
+LINE 1: update d set sno=4 where name='aloo';
+                                      ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# update d set sno=4 where name='aloo'
+dvdrental-# -
+dvdrental-# ;
+ERROR:  syntax error at or near ";"
+LINE 3: ;
+        ^
+dvdrental=# update d set sno=4 where name='aloo';
+ERROR:  malformed array literal: "aloo"
+LINE 1: update d set sno=4 where name='aloo';
+                                      ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# insert into dat(sno, name, age, m1, m2, m3) values(5,'vaera',18,88,88,88);
+INSERT 0 1
+dvdrental=# select * from dat;
+ sno |     name      | age | m1 | m2 | m3
+-----+---------------+-----+----+----+----
+   1 | aravind       |  20 | 90 | 98 | 88
+   2 | abddevillears |  18 | 20 | 20 | 10
+   3 | jadega        |  10 | 60 | 60 | 30
+   3 | aloo          |  18 | 60 | 90 | 90
+   3 | aloo          |  20 | 90 | 98 | 98
+   5 | vaera         |  18 | 88 | 88 | 88
+(6 rows)
+
+
+dvdrental=# select distinct name from d;
+ name
+------
+(0 rows)
+
+
+dvdrental=# select distinct name from dat;
+     name
+---------------
+ aravind
+ vaera
+ jadega
+ aloo
+ abddevillears
+(5 rows)
+
+
+dvdrental=# select distinct name from dat where age=18;
+     name
+---------------
+ abddevillears
+ aloo
+ vaera
+(3 rows)
+
+
+dvdrental=# select distinct name from dat where age<15;
+  name
+--------
+ jadega
+(1 row)
+
+
+dvdrental=# select distinct name from dat where age>=15;
+     name
+---------------
+ aravind
+ vaera
+ aloo
+ abddevillears
+(4 rows)
+
+
+dvdrental=# select distinct name from dat where age=15;
+ name
+------
+(0 rows)
+
+
+dvdrental=# select distinct name from dat where age<>20;
+     name
+---------------
+ vaera
+ jadega
+ aloo
+ abddevillears
+(4 rows)
+
+
+dvdrental=# select distinct name from dat where age between 15 and 20;
+     name
+---------------
+ abddevillears
+ aloo
+ aravind
+ vaera
+(4 rows)
+
+
+dvdrental=# select  name from dat where name like %a;
+ERROR:  syntax error at or near "%"
+LINE 1: select  name from dat where name like %a;
+                                              ^
+dvdrental=# select  name from dat where name like '%a';
+  name
+--------
+ jadega
+ vaera
+(2 rows)
+
+
+dvdrental=# select  name from dat where name like 'a%';
+     name
+---------------
+ aravind
+ abddevillears
+ aloo
+ aloo
+(4 rows)
+
+
+dvdrental=# select  name from dat where name like '_____';
+ name
+-------
+ vaera
+(1 row)
+
+
+dvdrental=# select name from dat where m1>50,m2>50 and m3>50 groupby age,name;
+ERROR:  syntax error at or near ","
+LINE 1: select name from dat where m1>50,m2>50 and m3>50 groupby age...
+                                        ^
+dvdrental=# select name from dat where m1>50 and m3>50 groupby age,name;
+ERROR:  syntax error at or near "groupby"
+LINE 1: select name from dat where m1>50 and m3>50 groupby age,name;
+                                                   ^
+dvdrental=# select name from dat where m1>50 and m3>50 group by age,name;
+  name
+---------
+ vaera
+ aloo
+ aravind
+ aloo
+(4 rows)
+
+
+dvdrental=# select * from dat where m1>50 and m3>50 groupby age,name;
+ERROR:  syntax error at or near "groupby"
+LINE 1: select * from dat where m1>50 and m3>50 groupby age,name;
+                                                ^
+dvdrental=# select * from dat where m1>50 and m3>50 group by age,name;
+ERROR:  column "dat.sno" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select * from dat where m1>50 and m3>50 group by age,name;
+               ^
+dvdrental=# select * from dat where m1>50 and m3>50 order by age,name;
+ sno |  name   | age | m1 | m2 | m3
+-----+---------+-----+----+----+----
+   3 | aloo    |  18 | 60 | 90 | 90
+   5 | vaera   |  18 | 88 | 88 | 88
+   3 | aloo    |  20 | 90 | 98 | 98
+   1 | aravind |  20 | 90 | 98 | 88
+(4 rows)
+
+
+dvdrental=# select * from data group by name and age having m1>50 and m2>50;
+ERROR:  relation "data" does not exist
+LINE 1: select * from data group by name and age having m1>50 and m2...
+                      ^
+dvdrental=# select * from dat group by name and age having m1>50 and m2>50;
+ERROR:  argument of AND must be type boolean, not type character varying
+LINE 1: select * from dat group by name and age having m1>50 and m2>...
+                                   ^
+dvdrental=# select * from dat group by name and age having m1>50 | m2>50;
+ERROR:  syntax error at or near ">"
+LINE 1: ...elect * from dat group by name and age having m1>50 | m2>50;
+                                                                   ^
+dvdrental=# select * from dat group by name and age having m1>50;
+ERROR:  argument of AND must be type boolean, not type character varying
+LINE 1: select * from dat group by name and age having m1>50;
+                                   ^
+dvdrental=# select * from dat group by m1 and age having m1>50;
+ERROR:  argument of AND must be type boolean, not type integer
+LINE 1: select * from dat group by m1 and age having m1>50;
+                                   ^
+dvdrental=# select name from dat group by name and age having age<15;
+ERROR:  argument of AND must be type boolean, not type character varying
+LINE 1: select name from dat group by name and age having age<15;
+                                      ^
+dvdrental=# select name from dat groupby name and age having age<15;
+ERROR:  syntax error at or near "name"
+LINE 1: select name from dat groupby name and age having age<15;
+                                     ^
+dvdrental=# select name from dat groupby name,age having age<15;
+ERROR:  syntax error at or near "name"
+LINE 1: select name from dat groupby name,age having age<15;
+                                     ^
+dvdrental=# select name from dat group by name,age having age<15;
+  name
+--------
+ jadega
+(1 row)
+
+
+dvdrental=# create table dat1(sno int,name varchar(50),grade varchar(10));
+CREATE TABLE
+dvdrental=# insert into dat1(sno, name, grade) values(1,'aravind','p');
+INSERT 0 1
+dvdrental=# insert into dat1(sno, name, grade) values(6,'radd','f');
+INSERT 0 1
+dvdrental=# insert into dat1(sno, name, grade) values(7,'abddevillears','f');
+INSERT 0 1
+dvdrental=# insert into dat1(sno, name, grade) values(3,'aloo','p');
+INSERT 0 1
+dvdrental=# insert into dat1(sno, name, grade) values(3,'jadega','p');
+INSERT 0 1
+dvdrental=# select * from dat1;
+ sno |     name      | grade
+-----+---------------+-------
+   1 | aravind       | p
+   6 | radd          | f
+   7 | abddevillears | f
+   3 | aloo          | p
+   3 | jadega        | p
+(5 rows)
+
+
+dvdrental=# select dat1.grade,dat.name from dat innerjoin dat1 on dat.sno=dat1.sno;
+ERROR:  syntax error at or near "dat1"
+LINE 1: select dat1.grade,dat.name from dat innerjoin dat1 on dat.sn...
+                                                      ^
+dvdrental=# select dat1.grade,dat.name from dat inner join dat1 on dat.sno=dat1.sno;
+ grade |  name
+-------+---------
+ p     | aravind
+ p     | jadega
+ p     | jadega
+ p     | aloo
+ p     | aloo
+ p     | aloo
+ p     | aloo
+(7 rows)
+
+
+dvdrental=# select dat1.grade,dat.name from dat left join dat1 on dat.sno=dat1.sno;
+ grade |     name
+-------+---------------
+ p     | aravind
+       | abddevillears
+ p     | jadega
+ p     | jadega
+ p     | aloo
+ p     | aloo
+ p     | aloo
+ p     | aloo
+       | vaera
+(9 rows)
+
+
+dvdrental=# select dat1.grade,dat.name from dat right join dat1 on dat.sno=dat1.sno;
+ grade |  name
+-------+---------
+ p     | aravind
+ p     | jadega
+ p     | jadega
+ p     | aloo
+ p     | aloo
+ p     | aloo
+ p     | aloo
+ f     |
+ f     |
+(9 rows)
+
+
+dvdrental=# select name,sno,grade from dat,dat1;
+ERROR:  column reference "name" is ambiguous
+LINE 1: select name,sno,grade from dat,dat1;
+               ^
+dvdrental=# select * from dat,dat1;
+ sno |     name      | age | m1 | m2 | m3 | sno |     name      | grade
+-----+---------------+-----+----+----+----+-----+---------------+-------
+   1 | aravind       |  20 | 90 | 98 | 88 |   1 | aravind       | p
+   1 | aravind       |  20 | 90 | 98 | 88 |   6 | radd          | f
+   1 | aravind       |  20 | 90 | 98 | 88 |   7 | abddevillears | f
+   1 | aravind       |  20 | 90 | 98 | 88 |   3 | aloo          | p
+   1 | aravind       |  20 | 90 | 98 | 88 |   3 | jadega        | p
+   2 | abddevillears |  18 | 20 | 20 | 10 |   1 | aravind       | p
+   2 | abddevillears |  18 | 20 | 20 | 10 |   6 | radd          | f
+   2 | abddevillears |  18 | 20 | 20 | 10 |   7 | abddevillears | f
+   2 | abddevillears |  18 | 20 | 20 | 10 |   3 | aloo          | p
+   2 | abddevillears |  18 | 20 | 20 | 10 |   3 | jadega        | p
+   3 | jadega        |  10 | 60 | 60 | 30 |   1 | aravind       | p
+   3 | jadega        |  10 | 60 | 60 | 30 |   6 | radd          | f
+   3 | jadega        |  10 | 60 | 60 | 30 |   7 | abddevillears | f
+   3 | jadega        |  10 | 60 | 60 | 30 |   3 | aloo          | p
+   3 | jadega        |  10 | 60 | 60 | 30 |   3 | jadega        | p
+   3 | aloo          |  18 | 60 | 90 | 90 |   1 | aravind       | p
+   3 | aloo          |  18 | 60 | 90 | 90 |   6 | radd          | f
+   3 | aloo          |  18 | 60 | 90 | 90 |   7 | abddevillears | f
+   3 | aloo          |  18 | 60 | 90 | 90 |   3 | aloo          | p
+   3 | aloo          |  18 | 60 | 90 | 90 |   3 | jadega        | p
+   3 | aloo          |  20 | 90 | 98 | 98 |   1 | aravind       | p
+   3 | aloo          |  20 | 90 | 98 | 98 |   6 | radd          | f
+   3 | aloo          |  20 | 90 | 98 | 98 |   7 | abddevillears | f
+   3 | aloo          |  20 | 90 | 98 | 98 |   3 | aloo          | p
+   3 | aloo          |  20 | 90 | 98 | 98 |   3 | jadega        | p
+   5 | vaera         |  18 | 88 | 88 | 88 |   1 | aravind       | p
+   5 | vaera         |  18 | 88 | 88 | 88 |   6 | radd          | f
+   5 | vaera         |  18 | 88 | 88 | 88 |   7 | abddevillears | f
+   5 | vaera         |  18 | 88 | 88 | 88 |   3 | aloo          | p
+   5 | vaera         |  18 | 88 | 88 | 88 |   3 | jadega        | p
+(30 rows)
+
+
+dvdrental=# update d set sno=4 where name='aloo';
+ERROR:  malformed array literal: "aloo"
+LINE 1: update d set sno=4 where name='aloo';
+                                      ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# update d set sno=4 where name='"aloo";
+dvdrental'# '
+dvdrental-# -
+dvdrental-# ;
+ERROR:  syntax error at or near ";"
+LINE 4: ;
+        ^
+dvdrental=# update d set sno=4 where name="aloo";
+ERROR:  column "aloo" does not exist
+LINE 1: update d set sno=4 where name="aloo";
+                                      ^
+dvdrental=# update d set sno=4 where name='aloo';
+ERROR:  malformed array literal: "aloo"
+LINE 1: update d set sno=4 where name='aloo';
+                                      ^
+DETAIL:  Array value must start with "{" or dimension information.
+dvdrental=# update dat set sno=4 where name='aloo';
+UPDATE 2
+dvdrental=#

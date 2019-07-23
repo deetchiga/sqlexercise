@@ -1,0 +1,117 @@
+ humanresources     | department                            | table | postgres
+ humanresources     | employee                              | table | postgres
+ humanresources     | employee
+ydepartmenthistory             | table | postgres
+ humanresources     | employeepayhistory                    | table | postgres
+ humanresources     | jobcandidate                          | table | postgres
+ humanresources     | shift                                 | table | postgres
+ person             | address                               | table | postgres
+ person             | addresstype                           | table | postgres
+ person             | businessentity                        | table | postgres
+ person             | businessentityaddress                 | table | postgres
+ person             | businessentitycontact                 | table | postgres
+ person             | contacttype                           | table | postgres
+ person             | countryregion                         | table | postgres
+ person             | emailaddress                          | table | postgres
+ person             | password                              | table | postgres
+ person             | person                                | table | postgres
+ person             | personphone                           | table | postgres
+ person             | phonenumbertype                       | table | postgres
+ person             | stateprovince                         | table | postgres
+ production         | billofmaterials                       | table | postgres
+ production         | culture                               | table | postgres
+ production         | document                              | table | postgres
+ production         | illustration                          | table | postgres
+ production         | location                              | table | postgres
+ production         | product                               | table | postgres
+ production         | productcategory                       | table | postgres
+ production         | productcosthistory                    | table | postgres
+ production         | productdescription                    | table | postgres
+ production         | productdocument                       | table | postgres
+ production         | productinventory                      | table | postgres
+ production         | productlistpricehistory               | table | postgres
+ production         | productmodel                          | table | postgres
+ production         | productmodelillustration              | table | postgres
+ production         | productmodelproductdescriptionculture | table | postgres
+ production         | productphoto                          | table | postgres
+ production         | productproductphoto                   | table | postgres
+ production         | productreview                         | table | postgres
+ production         | productsubcategory                    | table | postgres
+ production         | scrapreason                           | table | postgres
+ production         | transactionhistory                    | table | postgres
+ production         | transactionhistoryarchive             | table | postgres
+ production         | unitmeasure                           | table | postgres
+ production         | workorder                             | table | postgres
+ production         | workorderrouting                      | table | postgres
+ purchasing         | productvendor                         | table | postgres
+ purchasing         | purchaseorderdetail                   | table | postgres
+ purchasing         | purchaseorderheader                   | table | postgres
+ purchasing         | shipmethod                            | table | postgres
+ purchasing         | vendor                                | table | postgres
+ sales              | countryregioncurrency                 | table | postgres
+ sales              | creditcard                            | table | postgres
+ sales              | currency                              | table | postgres
+ sales              | currencyrate                          | table | postgres
+ sales              | customer                              | table | postgres
+ sales              | personcreditcard                      | table | postgres
+ sales              | salesorderdetail                      | table | postgres
+ sales              | salesorderheader                      | table | postgres
+ sales              | salesorderheadersalesreason           | table | postgres
+ sales              | salesperson                           | table | postgres
+ sales              | salespersonquotahistory               | table | postgres
+ sales              | salesreason                           | table | postgres
+ sales              | salestaxrate                          | table | postgres
+ sales              | salesterritory                        | table | postgres
+ sales              | salesterritoryhistory                 | table | postgres
+ sales              | shoppingcartitem                      | table | postgres
+ sales              | specialoffer                          | table | postgres
+ sales              | specialofferproduct                   | table | postgres
+ sales              | store                                 | table | postgres
+
+
+
+select * from salesman;
+select "This is SQL Exercise, Practice and Solution";
+select 5,10,15
+select 10+15;
+select 10+5*2-15;
+select commission from salesman;
+select ord_date,salesman_id,ord_no,purch_amt from orders;
+select distinct salesman_id from orders;
+Select name,city from salesman where city='Paris';
+select * from customer where grade>200;
+select ord_no,ord_date,purch_amt from orders where salesman_id=5001;
+select * from nobel_win where year=1970;
+select winner from nobel_win where year=1971 and subject='literature';
+select year,subject from nobel_win where winner='Dennis Gabor';
+select winner from nobel_win where subject='Physics' and year>=1950;
+select year, subject, winner, country from nobel_win where subject='Chemistry' and year between 1965 and 1975;
+select * nobel_win where year >1972 and winner in ('Menachem Begin','Yitzhak Rabin');
+select * from nobel_win where winner like 'Louis%';
+select winner from nobel_win where subject='Physics' and year=1970 union (select winner from nobel_win where subject='Economics' and year=1971);
+select * from nobel_win where year=1970 and subject not in('Physiology', 'Economics');
+select * from nobel_win where subject='Physiology' and  year<1971 union (select * from nobel_win where subject='peace' and year>=1974);
+select * from nobel_win where winner='Johannes Georg Bednorz';
+select * from nobel_win where subject not like 'P%' order by year asc,winner;
+select * from nobel_win where year=1970 order by case when subject in ('Economics','Chemistry') then 1 else 0 end asc, subject, winner;
+select * from item_mast where pro_price between 200 and 600;
+select pro_name,avg(pro_price) from item_mast where pro_com=16 group by pro_name;
+select pro_name, pro_price as rs from item_mast;
+select pro_name,pro_price from item_mast where pro_price>=250 order by pro_price desc,pro_name;
+select pro_com,avg(pro_price) from item_mast group by pro_com;
+select pro_name,min(pro_price) from item_mast group by pro_name;
+select distinct emp_lname from emp_details;
+select * from emp_details where emp_lname='Snares';
+select * from emp_details where emp_dept=57;
+
+
+
+
+
+
+
+ 
+
+
+
+

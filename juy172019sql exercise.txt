@@ -1,0 +1,73 @@
+select * from customer where  grade>200;
+select * from customer where city='New York' and grade>100;
+select * from customer where city='New York' or grade>100;
+select * from customer where city='New York' or not grade>100;
+select * from customer where not  city='New York' and grade>100;
+select * from orders where not ((ord_date='2012-09-10' and salesman_id>505)or purch_amt>1000);
+select salesman_id, name, city,commission from salesman where commission between 0.10 and 0.12;
+select * from orders where (purch_amt<200 )or(not ( ord_date>'2012-02-10' and customer_id<3009));
+select * from orders where not(ord_date='2012-08-17' and purch_amt<1000)or  (customer_id>3000 and purch_amt<1000);
+
+select * from emp_details where emp_lname='Dosni' or emp_lname='Mardy';
+select * from emp_details where emp_dept=47 or emp_dept=63;
+
+
+*************************************************************************************************************************
+select * from salesman where city='Paris' or city='Rome';
+select * from salesman where (city in ('Paris','Rome'));
+select salesman_id, name, city,commission from salesman where city in ('Paris','Rome');
+select * from customer where customer_id in(3007,3008,3009);
+select * from salesman where commission between 0.12 and 0.14;
+select * from orders where (purch_amt between 500 and 4000 )and( not purch_amt in (948.50,1983.43));
+select * from salesman where name between 'A' and 'k';
+select * from salesman where name not between 'A' and 'L';
+select * from customer where cust_name like 'B%';
+select * from customer where cust_name like '%n';
+select * from salesman where name like 'N__l%';
+select * from testtable where col1 like '%/_%'escape '/';
+select * from testtable where col1 not like '%/_%' escape '/';
+select * from testtable where col1 like '%/%';
+select * from testtable where col1 not like '%/%';
+select * from testtable where col1 like '%_/%';
+select * from testtable where col1 not like '%_/%';
+select * from testtable where col1 like '%/%%' escape '/'
+select * from testtable where col1 not like '%/%%' escape '/'
+select * from customer where grade is null;
+select * from customer where grade is not null;
+select * from emp_details where emp_lname like 'D%';
+
+****************************************************************************************************************************************************************
+select sum(purch_amt) from orders;
+select avg(purch_amt) from orders;
+select count(salesman_id) from orders;
+select count(cust_name) from customer;
+select count(customer_id) from customer where grade is not null;
+select max(purch_amt) from orders;
+select min(purch_amt) from orders;
+select city,max(grade) from customer group by city;
+select customer_id,max(purch_amt) from orders group by customer_id;
+select customer_id,ord_date,max(purch_amt) from orders group by customer_id,ord_date;
+select salesman_id,max(purch_amt) from orders where ord_date='2012-08-17' group by salesman_id;
+select customer_id,max(purch_amt),ord_date from orders group by customer_id,purch_amt,ord_date having max(purch_amt)>2000;
+select customer_id,max(purch_amt),ord_date from orders group by customer_id,purch_amt,ord_date having max(purch_amt) between 2000 and 6000;
+select customer_id,max(purch_amt),ord_date from orders group by customer_id,ord_date having max(purch_amt) in(2000,3000,5760,6000);
+select customer_id,max(purch_amt) from orders where customer_id between 3002 and 3007 group by customer_id;
+select customer_id,max(purch_amt) from orders where customer_id between 3002 and 3007 group by customer_id having max(purch_amt)>1000;
+select salesman_id,max(purch_amt) from orders where salesman_id between 5003 and 5008 group by salesman_id;
+select count(ord_no),ord_date,ord_no from orders where ord_date='2012-08-17'group by ord_no;
+select count(salesman_id),city from salesman where city is not null group by city;
+select ord_date,count(salesman_id) from orders group by ord_date,salesman_id;
+select avg(pro_price),pro_name from item_mast group by pro_name;
+select count(pro_id),pro_price,pro_id from item_mast where pro_price>=350 group by pro_id;
+select pro_com,pro_name,avg(pro_price) from item_mast group by pro_com,pro_name;
+select sum(dpt_allotment) from emp_department;
+select count(emp_idno),emp_dept from emp_details group by emp_dept;
+*************************************************************************************************************************************************************
+select salesman_id,name,city,commission*100,'%' from salesman;
+
+SELECT 'For ' as col1, ord_date,',there are' as col2, 
+COUNT (DISTINCT ord_no) as cnt,'orders.' as col3 
+FROM orders 
+GROUP BY col1, ord_date, col2, col3;
+
+

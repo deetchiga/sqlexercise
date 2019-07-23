@@ -1,0 +1,121 @@
+mydata$sum<-5
+mydata$sum <- mydata$x1 + mydata$x2
+mydata$mean <- (mydata$x1 + mydata$x2)/2
+
+mydat <- 4
+x <- mydat/2
+x
+
+v1 = c(1,2,3,4)
+v1
+
+x=5
+x = x ** 2
+x
+
+
+my.name = readline(prompt="Enter name: ")
+my.age = readline(prompt="Enter age: ")
+# convert character into integer
+my.age = as.integer(my.age)
+print(paste("Hi,", my.name, "next year you will be", my.age+1, "years old."))
+
+function(a,b)
+{
+  a=a+b;
+}
+function(2,5)
+
+#Author DataFlair
+vec = c(1,2,3)
+char_vec = c("Hadoop", "Spark", "Flink", "Mahout")
+logic_vec = c(TRUE, FALSE, TRUE, FALSE)
+out_list = list(vec, char_vec, logic_vec)
+out_list
+
+data1 = list(c(1,2,3,4),matrix(c(1,2,3,4),nrow = 1),10,"hadoop")
+data1
+
+
+ls()
+getwd()
+
+x=25
+y=10
+x%/%y
+
+a <- c(1,2,5.3,6,-20,4)
+a[c(1,6)]
+
+mymatric = matrix(c(1,2,3,4),2,2,T)
+mymatric
+
+
+mymatric[4,]
+
+d <- c(1,2,3,4)
+e <- c("red", "white", "red", NA)
+f <- c(TRUE,TRUE,TRUE,FALSE)
+mydata <- data.frame(d,e,f)
+names(mydata) <- c("ID","Color","Passed")
+mydata[1:2]
+mydata = [c("ID","color")]
+
+
+
+w <- list(name="Fred", mynumbers=a, mymatrix=y, age=5.3)
+w
+x = list(c(1,2,3,4),matrix(c(1,2,3,4),2,2,T),10,"hadoop")
+v <- c(w,x)
+v
+v[[8]]
+v[["name"]]
+length(v)
+str(v)
+names(v)
+
+data("mtcars")
+dim(mtcars)
+str(mtcars)
+attributes(mtcars)
+summary(mtcars)
+summary(mtcars$cyl)
+mtcars[,1]
+mtcars$mpg[1:10]
+mtcars[,c("cyl","disp")]
+table(mtcars$mpg)
+head(mtcars)
+tail(mtcars)
+mtcars[3,"hp"] = 185
+
+
+
+data("iris")
+dim(iris)
+names(iris)
+str(iris)
+attributes(iris)
+iris[1:5,]
+iris[1:10,]
+iris[1:10, "Sepal.Length"]
+iris$Sepal.Length[1:10]
+summary(iris)
+summary(iris)
+table(iris$petal.length,iris$petal.width)
+pie(table(iris$species))
+pie(table(iris$Species))    
+
+
+read.csv
+?read.csv
+d = read.csv("D:\\R\\churn.csv")
+dim(d)
+str(d)
+d$Account1.Length<-as.factor(d$Account.Length)
+d$Account1.Length
+d$account.length2<-d$Account.Length/2
+d$ab<-
+
+
+getwd()
+setwd

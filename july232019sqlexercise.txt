@@ -1,0 +1,23 @@
+40.select first_name , last_name , salary, department_id from employees where salary in (select salary from employees where department_id=40);
+41.select first_name , last_name , salary, department_id from employees where department_id=(select department_id from departments where department_name='Marketing');
+42.select first_name , last_name , salary, department_id from employees where salary> any (select salary from employees where department_id=40);
+43.select first_name ||''|| last_name as name, email, job_id,employee_id from employees where employee_id> any (select employee_id from employees where employee_id=165);
+44.select first_name ,last_name , salary, department_id from employees where employee_id< any (select employee_id from employees where department_id=70);
+45.select first_name ,last_name , salary, department_id from employees where 
+salary < (select avg(salary) from employees ) and
+department_id=(select department_id from employees where first_name='Laura');
+46.select first_name ,last_name ,salary,department_id from employees  where 
+department_id in (select department_id from departments where location_id=(select location_id from locations where city='London'));
+
+47.select city from locations where location_id = (select location_id from departments where department_id =(select department_id from employees where employee_id=134));
+48.select * from departments where department_id in (select department_id from employees where employee_id in 
+(select employee_id from job_history group by employee_id having count(employee_id) > 1) group by department_id having max(salary)> 7000);
+49.select * from departments where department_id in(select  department_id from employees group by department_id having min(salary)>=8000);
+50.select first_name,last_name from employees where employee_id in (select manager_id from employees  group by manager_id having count(*)>4);
+55.select * from employees where employee_id not in (select employee_id from job_history);
+54.select department_id,first_name,last_name,salary from employees a where salary =(select max(salary) from employees where department_id=a.department_id);
+53.select * from departments where manager_id in (select employee_id from employees where first_name='Susan');
+
+52.select * from employees where employee_id in (select employee_id from employees where salary 
+in(select min(salary) from employees where salary not in (select min(salary) from employees)));
+51.select * from jobs where job_id in( select job_id from employees where employee_id in (select employee_id from job_history where job_id='SA_REP'));
